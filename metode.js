@@ -20,10 +20,15 @@ let ws={
         //napravi anchor sa href ka strani detaljnije
         let a=document.createElement('a');
         a.href=`${add}?id=${encodeURIComponent(id)}`;
-        // a.setAttribute("target","_blank");
         a.innerHTML=text;
         a.className=klas;
         return a;
+    },
+    napTD:function(text="",klas=""){
+        let td=document.createElement('td');
+        td.innerHTML=text;
+        td.className=klas;
+        return td;
     },
     napPrS:function(proizvod){
         //napravi malu karticu sa proizvodom
@@ -54,6 +59,7 @@ let ws={
         let that=this;
         dugKorpa.addEventListener('click',function(){
             that.dodajUkorpu(proizvod);
+            that.upisVrKorpeDugme(korpa);
         })
         pr1.append(dugKorpa);
         return pr1;
@@ -81,7 +87,6 @@ let ws={
             }
             sessionStorage.setItem('korpa',JSON.stringify(korpa));
             console.log(korpa);
-            this.upisVrKorpeDugme(korpa);
     },
     napSvePr:function(proizvodi,roditelj){
         //napravi sve proizvode sa malom karticom
@@ -120,6 +125,7 @@ let ws={
         let that=this;
         dugKorpa.addEventListener('click',function(){
             that.dodajUkorpu(proizvod);
+            that.upisVrKorpeDugme(korpa);
         })
         pr1.append(dugKorpa);
 
@@ -157,30 +163,32 @@ let ws={
         let ind=this.nadjiPr(proizvodKorpa.id,proizvodi);
         let f=document.createDocumentFragment();
         let tr=document.createElement('tr');
-        let t1=document.createElement('td');
-        t1.append(this.napEl('span',proizvodi[ind].name,klS));
+
+        let t1=this.napTD(proizvodi[ind].name);
         f.append(t1);
         let t2=document.createElement('td');
         t2.append(this.napSl(proizvodi[ind].picture.small,"Nema slike",klS,120,120));
         f.append(t2);
-        for (let podatak in proizvodKorpa){
-            if(podatak!="id" && podatak!="cena" && podatak!="vrednost"){
-                let t=document.createElement('td');
-                t.append(this.napEl('span',proizvodKorpa[podatak],klS));
-                f.append(t);
-            } 
-            else if(podatak=="cena" || podatak=="vrednost"){
-                let t=document.createElement('td');
-                let c=this.formatBroja(proizvodKorpa[podatak]);
-                t.append(this.napEl('span',c,klS));
-                f.append(t);
-            }   
-        }
+        let t4=this.napTD(this.formatBroja(proizvodKorpa.cena));
+        f.append(t4);
+        let tKol=this.napTD(proizvodKorpa.kolicina);
+        f.append(tKol);
+        let tVr=this.napTD(this.formatBroja(proizvodKorpa.vrednost));
+        f.append(tVr);
+
         let t3=document.createElement('td');
+
+          function pomFun(){
+            //menja kolicinu i vrednost na ekranu, i brise red ako je kolicina <=0
+            tKol.innerHTML=proizvodKorpa.kolicina;
+            tVr.innerHTML=that.formatBroja(proizvodKorpa.vrednost);
+            if(tKol.innerHTML<=0) tr.remove();
+          }
+
         let smanji=this.napEl('button',"-",klDu);
             smanji.addEventListener('click',function(){
                 that.dodajUkorpu(proizvodi[ind],-1);
-                location.reload();
+                pomFun();
                 console.log(korpa);
             })
         t3.append(smanji);
@@ -188,7 +196,7 @@ let ws={
         let povecaj=this.napEl('button',"+",klDu);
             povecaj.addEventListener('click',function(){
                 that.dodajUkorpu(proizvodi[ind],1);
-                location.reload();
+                pomFun();
                 console.log(korpa);
             })
         t3.append(povecaj);
@@ -196,7 +204,7 @@ let ws={
         let X=this.napEl('button',"X",klDu);
             X.addEventListener('click',function(){
                 that.dodajUkorpu(proizvodi[ind],-proizvodKorpa.kolicina);
-                location.reload();
+                pomFun();
                 console.log(korpa);
             })
         t3.append(X);
