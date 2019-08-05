@@ -1,3 +1,4 @@
+//obavezno: id, name, picture small and large, short cost, i ako postoji popust onda short cost2; ak one postoji popust, onda mora short cost2:0 !!
 let proizvodi=[
     {
         id:"01",
