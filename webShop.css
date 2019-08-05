@@ -1,0 +1,250 @@
+.zaglavlje{
+    background-color: darkblue;
+    color: white;
+    height: 120px;
+    padding-left: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 30px;
+}
+
+.zaglavlje a:link{
+    color: white;
+}
+
+.zaglavlje a:visited{
+ color: white;
+}
+
+.container{
+    display:flex;
+    background-color: aquamarine;
+    min-height: 1000px;
+    margin: 0 auto;
+}
+
+nav{
+    width: 200px;
+    flex-grow: 0;
+    margin-right: 10px;
+    background-color: aqua;
+    min-height: 1000px;
+    height: 100%;
+    padding: 10px;
+}
+
+.products{
+    min-width: 600px;
+    flex-grow: 1;
+    min-height: 1000px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item{
+    background-color: chartreuse;
+    border: 1px solid blue;
+    width: 200px;
+    height: 400px;
+    text-align: center;
+    border-radius: 5%;
+    box-shadow: 4px 10px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+    margin: 10px;
+    padding: 5px;
+    position: relative;
+}
+
+.item:hover{
+    box-shadow: 4px 20px 30px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.smallPicure{
+    border: 1px solid blue;
+}
+
+.namePr{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.cena{
+    font-style: italic;
+}
+
+.cena-precrtana{
+    margin-left: 10px;
+    text-decoration: line-through;
+}
+
+.smallDes{
+    margin: 5px;
+}
+
+.proizvodDetaljnije{
+    background-color: aquamarine;
+    display:flex;
+    justify-content: center;
+}
+
+.itemL{
+    flex-grow:1;
+    background-color: chartreuse;
+    text-align: center;
+    min-width: 700px; 
+}
+
+
+
+.nameL{
+    margin: 0px;
+    margin-bottom: 2em;
+    padding-top: 1em;
+    font-weight: bold;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+.largePicure{
+    border: 5px groove blue;
+    border-radius: 3%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+}
+
+.largePicure:hover{
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.bigDes{
+    font-weight: bold;
+}
+
+.bigDes:nth-child(2n){
+    background-color: rgb(112, 168, 56);
+}
+
+.bigDes-precrtano{
+    text-decoration: line-through;
+}
+
+.bigDes-usteda{
+    font-size: 0.9em;
+}
+
+.linkDetaljnije{
+    color:red;
+}
+
+.linkDetaljnije:link{
+    color:red;
+}
+
+.linkDetaljnije:visited{
+    color:red;
+}
+
+.dugme{
+    cursor: pointer;
+    color: red;
+    background-color: white;
+    margin: 30px;
+    transition: all 0.3s;
+    min-width: 100px;
+    min-height: 50px;
+    
+}
+
+.dugme:hover{
+    color: white;
+    background-color: darkgreen;
+    transform: scale(1.1);
+}
+
+.dugme1{
+    position: absolute;
+    bottom: -10px; 
+    left: 20px;
+}
+
+.korpa{
+    background-image: linear-gradient(white,lightblue);
+    min-height: 100vh;
+}
+
+.maloDugme{
+    color:blue;
+}
+
+.maloDugme:hover{
+    color:red;
+}
+
+table{
+    margin: 20px auto;
+    border-spacing: 0px;
+}
+
+th{
+    border-bottom: 1px solid black;
+    color:white;
+}
+
+td{
+    border-bottom: 1px solid black;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+}
+
+.celija{
+    color: red;
+}
+
+tr{
+    background-color: aqua;
+}
+
+tr:first-child{
+    background-color:blue;
+}
+
+tr:nth-child(2n){
+    background-color: lightgoldenrodyellow;
+}
+
+.rezKorpe{
+    border: 4px groove red;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.centar{
+    text-align: center;
+}
+
+.dugmeZaglavlje{
+    cursor: pointer;
+    color: blue;
+    background-color: lightblue;
+    margin: 30px;
+    transition: all 0.3s;
+    min-width: 100px;
+    min-height: 50px;
+}
+
+.dugmeZaglavlje:hover{
+    color: white;
+    background-color: darkgreen;
+    transform: scale(1.1);
+}
+
+@media all and (max-width: 650px) {
+    .products{
+        min-width: 300px;
+    }
+}
