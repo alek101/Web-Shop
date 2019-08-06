@@ -64,10 +64,11 @@ nav{
 
 .smallPicure{
     border: 1px solid blue;
+    background-color: #FEFEFE;
 }
 
 .namePr{
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-weight: bold;
 }
 
@@ -110,6 +111,7 @@ nav{
 
 .largePicure{
     border: 5px groove blue;
+    background-color: #FEFEFE;
     border-radius: 3%;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
     transition: all 0.3s;

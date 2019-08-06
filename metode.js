@@ -119,7 +119,8 @@ let ws={
             }
         }
         for (let opis in proizvod.additional){
-            pr1.append(this.napEl('p',`${opis}: ${proizvod.additional[opis]}`,strana.klasDes2));
+            let o=opis.split("_").join(" ");
+            pr1.append(this.napEl('p',`${o}: ${proizvod.additional[opis]}`,strana.klasDes2));
         }
         let dugKorpa=this.napEl('button',"додај",strana.klasDug);
         let that=this;

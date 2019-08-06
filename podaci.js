@@ -1,55 +1,71 @@
-//obavezno: id, name, picture small and large, short cost, i ako postoji popust onda short cost2; ak one postoji popust, onda mora short cost2:0 !! 
 let proizvodi=[
     {
-        id:"01",
-        name:"Prvo",
+        id: "01",
+        name: "EPSON Projektor EH-TW650",
         picture:{
-            small: "SlikeDomaci10/mal_slik_1.jpg",
-            large: "SlikeDomaci10/vel_slik_1.jpg",
+            small: "Slike/EPSON.png",
+            large: "Slike/EPSON.png",
         },
         short:{
-            cost: 100,
-            cost2: 0,
+            cost: 71999,
+            cost2: 99999,
         },
         additional:{
-            add1:"add1",
-            add2:"add2",
-            add3:"add3",
+            Sistem_projekcije:"3LCD",
+            Tip_osvetljenja:"UHE",
+            Osnovna_rezolucija:"1920x1080 (Full HD)",
+            Snaga_lampe: "210 W",
         }
     },
     {
-        id:"02",
-        name:"Drugo",
+        id: "02",
+        name: "ACER Projektor K-137i",
         picture:{
-            small: "SlikeDomaci10/mal_slik_2.jpg",
-            large: "SlikeDomaci10/vel_slik_2.jpg",
+            small: "Slike/ACER.png",
+            large: "Slike/ACER.png",
         },
         short:{
-            cost: 125,
-            cost2:150,
-        },
-        additional:{
-            add1:"add1",
-            add2:"add2",
-            add3:"add3",
-        }
-    },
-    {
-        id:"03",
-        name:"Trece",
-        picture:{
-            small: "SlikeDomaci10/mal_slik_3.jpg",
-            large: "SlikeDomaci10/vel_slik_3.jpg",
-        },
-        short:{
-            cost: 105,
+            cost: 82999,
             cost2: 0,
         },
         additional:{
-            add1:"add1",
-            add2:"add2",
-            add3:"add3",
+            Sistem_projekcije:"DLP",
+            Tip_osvetljenja:"LED",
+            Osnovna_rezolucija:"1280x800 (WXGA)",
         }
     },
-
+    {
+        id: "03",
+        name: "LG Minibean Projektor PH-550G",
+        picture:{
+            small: "Slike/LG.png",
+            large: "Slike/LG.png",
+        },
+        short:{
+            cost: 59999,
+            cost2: 0,
+        },
+        additional:{
+            Sistem_projekcije:"LED",
+            Tip_osvetljenja:"RGB LED",
+            Osnovna_rezolucija:"1280x720 (WXGA)",
+        }
+    },
+    {
+        id: "04",
+        name: "HITACHI Projektor LP-WU6500",
+        picture:{
+            small: "Slike/EPSON.png",
+            large: "Slike/EPSON.png",
+        },
+        short:{
+            cost: 474999,
+            cost2: 0,
+        },
+        additional:{
+            Sistem_projekcije:"DLP",
+            Tip_osvetljenja:"Laser",
+            Osnovna_rezolucija:"1920x1080 (Full HD)",
+        }
+    },
 ]
