@@ -1,3 +1,29 @@
+let pf={
+    napraviElement:function(tip="div",podesavanja){
+        let element=document.createElement(tip);
+        element.className=podesavanja.klasa;
+        switch(tip){
+            case "img":{
+                element.src=podesavanja.src;
+                element.alt=podesavanja.alt;
+                if(podesavanja.width>0 && !isNaN(Number(podesavanja.width))) element.style.width=podesavanja.width+"px";
+                if(podesavanja.height>0 && !isNaN(Number(podesavanja.height))) element.style.height=podesavanja.height+"px";
+            }; return;
+            case "a":{
+                element.href=podesavanja.href;
+                element.innerHTML=podesavanja.tekst;
+            };return;
+            default:{
+                element.innerHTML=podesavanja.tekst;
+            }
+        }
+        for (let dete of podesavanja.deca){
+            element.appendChild(dete);
+        }
+        return element;
+    }
+}
+
 let ws={
     //napravi HTML element
     napEl:function(tip="div",text="",klas=""){
