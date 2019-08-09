@@ -1,7 +1,7 @@
 let pf={
     napraviElement:function(tip="div",podesavanja){
         let element=document.createElement(tip);
-            element.className=podesavanja.klasa;
+            if (klasa!=undefined) element.className=podesavanja.klasa;
         switch(tip){
             case "img":{
                     element=document.createElement('img');
