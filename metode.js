@@ -1,11 +1,18 @@
 let pf={
-    napraviElement:function(tip="div",podesavanja){
+    napraviElement:function(tip="div",podesavanja={
+        tekst:null,
+        klasa:"",
+        src:"",
+        alt:"Nema slike",
+        width:0,
+        height:0,
+        href:"",
+    }){
         let element=document.createElement(tip);
-            if (klasa!=undefined) element.className=podesavanja.klasa;
+            element.className=podesavanja.klasa;
         switch(tip){
             case "img":{
                     element=document.createElement('img');
-                    element.className=podesavanja.klasa;
                     element.src=podesavanja.src;
                     element.alt=podesavanja.alt;
                     if(podesavanja.width>0 && !isNaN(Number(podesavanja.width))) element.style.width=podesavanja.width+"px";
