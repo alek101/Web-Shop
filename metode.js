@@ -1,35 +1,3 @@
-let pf={
-    napraviElement:function(tip="div",podesavanja={
-        tekst:null,
-        klasa:"",
-        src:"",
-        alt:"Nema slike",
-        width:0,
-        height:0,
-        href:"",
-    }){
-        let element=document.createElement(tip);
-            element.className=podesavanja.klasa;
-        switch(tip){
-            case "img":{
-                    element=document.createElement('img');
-                    element.src=podesavanja.src;
-                    element.alt=podesavanja.alt;
-                    if(podesavanja.width>0 && !isNaN(Number(podesavanja.width))) element.style.width=podesavanja.width+"px";
-                    if(podesavanja.height>0 && !isNaN(Number(podesavanja.height))) element.style.height=podesavanja.height+"px";
-            }; break;
-            case "a":{
-                    element.href=podesavanja.href;
-                    element.innerHTML=podesavanja.tekst;
-            };break;
-            default:{
-                    element.innerHTML=podesavanja.tekst;
-            }
-        }       
-        return element;
-    }
-}
-
 
 let ws={
     //napravi HTML element
@@ -269,7 +237,7 @@ let ws={
         return n[0].split("").reverse().reduce((s,c,i)=>(i%3==2 && i>0 && i!=l-1)? s+c+".":s+c,"").split("").reverse().join("")+n[1];
     },
     formatBrojaN:function(num){
-        return new Intl.NumberFormat('sr-RS').format(num);
+        return new Intl.NumberFormat('sr-RS',{minimumFractionDigits: 2}).format(num);
     },
     upisVrKorpeDugme:function(korpa){
         let vr=this.ukupnaVrednost(korpa);
@@ -280,7 +248,7 @@ let ws={
 }
 
 let strana={
-    filter: document.querySelector('nav'),
+    filter: document.querySelector('.filter'),
     prod: document.querySelector('.products'),
     klasProd: "item",
     klasNam: "namePr",
@@ -288,7 +256,7 @@ let strana={
     klasDes1: "smallDes",
     klasProdL: "itemL",
     klasNamL: "nameL",
-    klasLgPc: "largePicure",
+    klasLgPc: "largePicture",
     klasDes2: "bigDes",
     klasDes22: "bigDes bigDes-precrtano",
     klasDes23: "bigDes bigDes-usteda",
