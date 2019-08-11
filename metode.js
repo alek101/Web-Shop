@@ -64,7 +64,7 @@ let ws={
         let i=pf.nadjiProizvodPoId(id,proizvodi);
         roditelj.append(this.napPrL(korpa,proizvodi[i]));
     },
-    dodajRed:function(korpa,proizvodKorpa,proizvodi,klS="",klDu=""){
+    dodajRed:function(korpa,proizvodKorpa,proizvodi,roditeljVrednostKorpe,klS="",klDu=""){
         let that=this;
         let ind=pf.nadjiProizvodPoId(proizvodKorpa.id,proizvodi);
         let f=document.createDocumentFragment();
@@ -83,6 +83,7 @@ let ws={
             tKol.innerHTML=proizvodKorpa.kolicina;
             tVr.innerHTML=pf.formatBroja(proizvodKorpa.vrednost);
             if(tKol.innerHTML<=0) tr.remove();
+            that.upisiVrednostKorpe(korpa,roditeljVrednostKorpe);
           }
 
         let smanji=pf.makeElement('button',{text:"-",className:klDu});
@@ -110,9 +111,9 @@ let ws={
         tr.append(f);
         return tr;
     },
-    napraviTabelu:function(korpa,proizvodi,roditelj,klS,klDu){
+    napraviTabelu:function(korpa,proizvodi,roditelj,roditeljVrednostKorpa,klS,klDu){
         for (let proizvodKorpa of korpa){
-            roditelj.append(this.dodajRed(korpa,proizvodKorpa,proizvodi,klS,klDu));
+            roditelj.append(this.dodajRed(korpa,proizvodKorpa,proizvodi,roditeljVrednostKorpa,klS,klDu));
         }
     },
     //Ostale metode
@@ -138,7 +139,7 @@ let ws={
     upisiVrednostKorpe:function(korpa,roditelj){
         let vr=this.ukupnaVrednost(korpa);
         vr=pf.formatBroja(vr);
-        roditelj.append(`Укупна вредност ваше корпе је: ${vr} дин!`);
+        roditelj.innerHTML=`Укупна вредност ваше корпе је: ${vr} дин!`;
     },
     naruci:function(){
         sessionStorage.clear();
