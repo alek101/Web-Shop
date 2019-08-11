@@ -1,7 +1,7 @@
 addEventListener('DOMContentLoaded',function(){
     strana.prodDet.innerHTML="";
-    let id=ws.nadjiIDstrane2();
-    ws.napPrStranu(proizvodi,id,strana.prodDet);
+    let id=pf.nadjiIDstrane();
+    ws.napPrStranu(korpa,proizvodi,id,strana.prodDet);
 
     ws.upisVrKorpeDugme(korpa);
 

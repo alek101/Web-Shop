@@ -1,6 +1,6 @@
 let pf={
     makeElement:function(type="div",settings={
-        text:null,
+        text: null,
         className:"",
         src:"",
         alt:"There is no Picture aveilable",
@@ -28,7 +28,7 @@ let pf={
         }       
         return element;
     },
-    addBasket:function(korpa,proizvod,dodaj=1){
+    addBasket:function(korpa,proizvod,dodaj){
         let id=proizvod.id;
         if(korpa.length>0 && korpa.some(c=>c.id==id)){
             let i=korpa.findIndex(c=>c.id==id);
@@ -40,13 +40,15 @@ let pf={
         else{
             let c=proizvod.cena;
             let naziv=proizvod.naziv;
-            korpa.push({
+            let l={
                 id:id,
                 naziv:naziv,
                 cena: c,
-                kolicina: k,
+                kolicina: 1,
                 vrednost: c,
-            })
+            };
+            console.log(korpa);
+            korpa.push(l)
         }
         return korpa;
     },
@@ -73,4 +75,10 @@ let pf={
     formatBroja:function(num){
         return new Intl.NumberFormat('sr-RS',{minimumFractionDigits: 2}).format(num);
     },
+    formatbroja2:function(num){
+        let n=num.toString().split(sep);
+        (n[1]==undefined)? n[1]=",00":(n[1].length>2)? n[1]=","+n[1].slice(0,2):(n[1].length==2)? n[1]=","+n[1]:n[1]=","+n[1]+"0";
+        let l=n[0].length;
+        return n[0].split("").reverse().reduce((s,c,i)=>(i%3==2 && i>0 && i!=l-1)? s+c+".":s+c,"").split("").reverse().join("")+n[1];
+    }
 }

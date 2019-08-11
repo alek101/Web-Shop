@@ -1,10 +1,10 @@
 addEventListener('DOMContentLoaded',function(){
-    ws.napSvePr(proizvodi,strana.prod);
+    ws.napSvePr(korpa,proizvodi,strana.prod);
 
     ws.upisVrKorpeDugme(korpa);
 
     strana.inputi[0].addEventListener('keyup',function(){
-        ws.findName(proizvodi,strana.inputi[0].value,strana.prod);
+        ws.findName(korpa,proizvodi,strana.inputi[0].value,strana.prod);
     })
 
     strana.inputi[1].addEventListener('keyup',function(){
@@ -30,5 +30,5 @@ function filtriraj(){
     if(max=="") max=undefined;
     let min=strana.inputi[1].value;
     if(min=="") min=undefined;
-    ws.filterCost(proizvodi,strana.prod,strana.krit.value,min,max);
+    ws.filterCost(korpa,proizvodi,strana.prod,strana.krit.value,min,max);
 }
