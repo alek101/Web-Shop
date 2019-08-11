@@ -125,12 +125,12 @@ let ws={
     findName:function(korpa,proizvodi,input,roditelj){
         console.log(proizvodi);
         //filter po imenu
-        let n=proizvodi.filter(c=>c.naziv.toLowerCase().includes(input.toLowerCase())).sort((a,b)=>(a.naziv>b.naziv)? 1:-1);
+        let n=pf.filterString(proizvodi,"naziv",input);
         this.napSvePr(korpa,n,roditelj);
     },
-    filterCost:function(korpa,proizvodi,roditelj,p=1,min=0,max=Infinity,){
+    filterCost:function(korpa,proizvodi,roditelj,dod={p:1,min:0,max:Infinity}){
         //filter po ceni,p=1 za rastucu cenu, p=-1 za opadajucu cenu
-        let n=proizvodi.filter(c=>c.cena>=min && c.cena<=max).sort((a,b)=>(a.cena>b.cena)? p:-p);
+        let n=pf.filterNumber(proizvodi,"cena",{sorter:dod.p,min:dod.min,max:dod.max});
         this.napSvePr(korpa,n,roditelj);
     },
     ukupnaVrednost:function(korpa){

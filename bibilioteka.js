@@ -60,18 +60,6 @@ let pf={
         //nadji indeks proizvoda
         return proizvodi.findIndex(c=>c.id==id);
     },
-    pretragaNiz:function(array,settings={
-        string:"",
-        min:"",
-        max:"",
-    }){
-        let result={};
-        result.string=array.filter(el=>el.toLowerCase().includes(settings.string.toLowerCase()));
-        result.min=array.filter(el=>el>=settings.min);
-        result.max=array.filter(el=>el<=settings.max);
-        result.range=array.filter(el=>el>=settings.min && el<=settings.max);
-        return result;
-    },
     formatBroja:function(num){
         return new Intl.NumberFormat('sr-RS',{minimumFractionDigits: 2}).format(num);
     },
@@ -80,5 +68,28 @@ let pf={
         (n[1]==undefined)? n[1]=",00":(n[1].length>2)? n[1]=","+n[1].slice(0,2):(n[1].length==2)? n[1]=","+n[1]:n[1]=","+n[1]+"0";
         let l=n[0].length;
         return n[0].split("").reverse().reduce((s,c,i)=>(i%3==2 && i>0 && i!=l-1)? s+c+".":s+c,"").split("").reverse().join("")+n[1];
-    }
+    },
+    filterString:function(array_object,criterium,target,settings={sorter:1}){
+        //array_object is array of object, criterium is part of object we are filtering, target is string we want to include.
+        if(!Array.isArray(array_object)) throw new Error('First argument must be array!');
+        if(typeof target!=="string") throw new Error('Argument is missing o it is not string!');
+        if(typeof criterium!=="string") throw new Error('Argument is missing o it is not string!');
+        if(settings.sorter!=1 && settings.sorter!=-1) throw new Error('Bad sorter!');
+       return array_object.filter(object=>object[criterium].toLowerCase().includes(target.toLowerCase())).sort((a,b)=>(a[criterium]>b[criterium])? settings.sorter:-settings.sorter);
+    },
+    filterNumber:function(array_object,criterium,settings={
+        sorter:1,
+        min:-Infinity,
+        max: Infinity}){
+        //array_object is array of object, criterium is part of object we are filtering. 
+        let min,max; 
+        if(!Array.isArray(array_object)) throw new Error('First argument must be array!');
+        if(typeof criterium!=="string") throw new Error('Argument is missing o it is not string!');
+        if(settings.sorter!=1 && settings.sorter!=-1) throw new Error('Bad sorter!');
+            (settings.min=="")? min=undefined:min=Number(settings.min);
+            (settings.max=="")? max=undefined:max=Number(settings.max);
+            if(isNaN(min)) min=-Infinity;
+            if(isNaN(max)) max= Infinity;
+       return array_object.filter(object=>object[criterium]>=min && object[criterium]<=max).sort((a,b)=>(a[criterium]>b[criterium])? settings.sorter:-settings.sorter);
+    },
 }

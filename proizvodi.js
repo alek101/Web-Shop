@@ -26,9 +26,5 @@ addEventListener('DOMContentLoaded',function(){
 })
 
 function filtriraj(){
-    let max=strana.inputi[2].value;
-    if(max=="") max=undefined;
-    let min=strana.inputi[1].value;
-    if(min=="") min=undefined;
-    ws.filterCost(korpa,proizvodi,strana.prod,strana.krit.value,min,max);
+    ws.filterCost(korpa,proizvodi,strana.prod,{p:strana.krit.value,min:strana.inputi[1].value,max:strana.inputi[2].value});
 }
