@@ -13,6 +13,7 @@ let pf={
         switch(type){
             case "img":{
                     element=document.createElement('img');
+                    element.className=settings.className;
                     element.src=settings.src;
                     element.alt=settings.alt;
                     if(settings.width>0 && !isNaN(Number(settings.width))) element.style.width=settings.width+"px";
