@@ -1,13 +1,20 @@
 let pf={
     makeElement:function(type="div",settings={
-        text: null,
+        text: "",
         className:"",
         src:"",
         alt:"There is no Picture aveilable",
         width:0,
         height:0,
         href:"",
-    }){
+        })
+        {
+
+            settings.text=settings.text || "";
+            settings.className=settings.className || "";
+            settings.src=settings.src || "";
+            settings.alt=settings.alt || "There is no Picture aveilable";
+            settings.href=settings.href || "";
         let element=document.createElement(type);
             element.className=settings.className;
         switch(type){
@@ -29,6 +36,7 @@ let pf={
         }       
         return element;
     },
+
     addBasket:function(korpa,proizvod,dodaj){
         let id=proizvod.id;
         if(korpa.length>0 && korpa.some(c=>c.id==id)){
@@ -92,5 +100,14 @@ let pf={
             if(isNaN(min)) min=-Infinity;
             if(isNaN(max)) max= Infinity;
        return array_object.filter(object=>object[criterium]>=min && object[criterium]<=max).sort((a,b)=>(a[criterium]>b[criterium])? settings.sorter:-settings.sorter);
+    },
+    validateEmail: function(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    },
+    createDate: function (inputDate)
+    {
+        inputDate=inputDate.split('-');
+        return new Date(inputDate[0],inputDate[1]-1,inputDate[2]);
     },
 }
